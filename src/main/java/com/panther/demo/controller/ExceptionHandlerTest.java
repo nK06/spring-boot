@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 异常捕获
+ */
 @ControllerAdvice
 public class ExceptionHandlerTest {
 
