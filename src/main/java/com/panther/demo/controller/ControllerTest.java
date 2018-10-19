@@ -24,8 +24,8 @@ public class ControllerTest {
         if("aa".equals(user)){
             throw new UserNotExistException();
         }
-//        redisTemplate.opsForValue().set("abc"," [{'group':0,'param':['one','two','three']}]");
-//        redisTemplate.opsForValue().set("bbb","33333");
+        //redisTemplate.opsForValue().set("abc"," [{'group':0,'param':['one','two','three']}]");
+        //redisTemplate.opsForValue().set("bbb","33333");
         return "hello world!";
     }
 
