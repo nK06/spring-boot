@@ -1,0 +1,38 @@
+server:
+  port: 8080
+logging:
+  level:
+    com.panther: debug
+  #日志路径 eg:当前磁盘根路径下创建spring文件夹和log文件夹   /spring/log
+  path:
+  #日志文件  C:/xxxx.log
+  file:
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} === [%thread] === %-5level === %logger{50} === %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+spring:
+  profiles:
+    active: dev
+  mvc:
+    date-format: yyyy-MM-dd
+---
+server:
+  port: 8081
+spring:
+  profiles: dev
+  redis:
+    database: 0
+    host: 192.168.139.129
+    port: 6379
+    password: 123456
+  #国际化指定配置文件
+  messages:
+    basename: i18n.login
+  #开发模式下禁用模板引擎缓存
+  thymeleaf:
+    cache: false
+---
+server:
+  port: 8082
+spring:
+  profiles: prod
