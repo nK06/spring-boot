@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.panther.demo.mapper.EmployeeMapper">
+    <!--
+    public Employee getEmployeeById(Integer id);
+
+    public int insertEmp(Employee employee);
+    -->
+    <select id="getEmployeeById" resultType="com.panther.demo.entities.Employee">
+        select * from employee where id = #{id}
+    </select>
+
+    <select id="insertEmp">
+        insert into employee(lastName,email,gender,d_id,birth) values (#{lastName},#{email},#{gender},#{department.id},#{birth})
+    </select>
+</mapper>

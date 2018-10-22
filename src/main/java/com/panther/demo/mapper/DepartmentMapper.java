@@ -2,9 +2,11 @@ package com.panther.demo.mapper;
 
 import com.panther.demo.entities.Department;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
 
 //指定是一个操作数据库的mapper
 @Mapper
+@Component
 public interface DepartmentMapper {
 
     @Select("select *from department where id = #{id}")
