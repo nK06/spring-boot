@@ -2,11 +2,7 @@ package com.panther.demo.services;
 
 import com.github.pagehelper.PageInfo;
 import com.panther.demo.entities.Employee;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
 public interface EmployeeService {
 
     public Employee getEmployeeById(Integer id);

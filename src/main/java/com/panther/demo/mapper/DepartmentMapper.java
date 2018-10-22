@@ -4,8 +4,9 @@ import com.panther.demo.entities.Department;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 //指定是一个操作数据库的mapper
-@Mapper
 @Component
 public interface DepartmentMapper {
 
@@ -20,5 +21,8 @@ public interface DepartmentMapper {
 
     @Update("update department set departmentName = #{departmentName} where id = #{id}")
     public int updateDept(Department department);
+
+    @Select("select *from department")
+    public List<Department> selectAll();
 
 }

@@ -5,11 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.panther.demo.entities.Employee;
 import com.panther.demo.mapper.EmployeeMapper;
 import com.panther.demo.services.EmployeeService;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+@Service
+@Transactional
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeMapper employeeMapper;
