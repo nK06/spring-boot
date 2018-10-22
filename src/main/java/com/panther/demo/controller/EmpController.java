@@ -1,9 +1,11 @@
 package com.panther.demo.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.panther.demo.dao.DepartmentDao;
-import com.panther.demo.dao.EmployeeDao;
 import com.panther.demo.entities.Department;
 import com.panther.demo.entities.Employee;
+import com.panther.demo.mapper.EmployeeMapper;
+import com.panther.demo.servicesImp.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +17,24 @@ import java.util.Collection;
 public class EmpController {
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private DepartmentDao departmentDao;
 
     @Autowired
-    private DepartmentDao departmentDao;
+    EmployeeMapper employeeMapper;
+
+    @Autowired
+    private EmployeeServiceImpl employeeService;
+
     /**
      * 查询所有员工返回列表页
      * @return
      */
+
     @GetMapping("/emps")
-    public String empList(Model model){
-        Collection<Employee> employees = employeeDao.getAll();
-        model.addAttribute("emps",employees);
-        return "emp/list";
+    public PageInfo<Employee> empList(@RequestParam(defaultValue = "0") Integer page,
+                                      @RequestParam(defaultValue = "0") Integer size){
+        PageInfo<Employee> pageInfo = employeeService.selectAll(page, size);
+        return pageInfo;
     }
 
     /**
@@ -48,7 +55,7 @@ public class EmpController {
     @PostMapping("/emp")
     public String addEmp(Employee employee,Model model){
 
-        employeeDao.save(employee);
+        employeeService.insertEmp(employee);
         //redirect:重定向到一个地址
         //forward:转发请求到一个地址
         return "redirect:/emps";
@@ -59,7 +66,7 @@ public class EmpController {
      */
     @GetMapping("/emp/{id}")
     public String modifyEmp(@PathVariable("id") Integer id,Model model){
-        Employee employee = employeeDao.get(id);
+        Employee employee = employeeMapper.getEmployeeById(id);
         model.addAttribute("employee",employee);
         //显示所有的部门列表
         Collection<Department> departments = departmentDao.getDepartments();
@@ -75,7 +82,7 @@ public class EmpController {
      */
     @PutMapping("/emp")
     public String updateEmp(Employee employee){
-        employeeDao.save(employee);
+        employeeService.updateEmp(employee);
         return "redirect:/emps";
     }
 
@@ -86,7 +93,7 @@ public class EmpController {
      */
     @DeleteMapping("emp/{id}")
     public String deleteEmp(@PathVariable("id") Integer id){
-        employeeDao.delete(id);
+        employeeService.deleteEmp(id);
         return "redirect:/emps";
     }
 }
