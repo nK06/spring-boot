@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.panther.demo.generator.mapper.EmployeeMapper" >
-  <resultMap id="BaseResultMap" type="com.panther.demo.generator.pojo.Employee" >
+<mapper namespace="com.panther.demo.mapper.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.panther.demo.entities.Employee" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="lastName" property="lastname" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List" >
     id, lastName, email, gender, department_id, birth
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.panther.demo.generator.pojo.EmployeeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.panther.demo.entities.EmployeeExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,13 +94,13 @@
     delete from employee
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.panther.demo.generator.pojo.EmployeeExample" >
+  <delete id="deleteByExample" parameterType="com.panther.demo.entities.EmployeeExample" >
     delete from employee
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.panther.demo.generator.pojo.Employee" >
+  <insert id="insert" parameterType="com.panther.demo.entities.Employee" >
     insert into employee (id, lastName, email, 
       gender, department_id, birth
       )
@@ -108,7 +108,7 @@
       #{gender,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{birth,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.panther.demo.generator.pojo.Employee" >
+  <insert id="insertSelective" parameterType="com.panther.demo.entities.Employee" >
     insert into employee
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -151,7 +151,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.panther.demo.generator.pojo.EmployeeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.panther.demo.entities.EmployeeExample" resultType="java.lang.Integer" >
     select count(*) from employee
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -195,7 +195,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.panther.demo.generator.pojo.Employee" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.panther.demo.entities.Employee" >
     update employee
     <set >
       <if test="lastname != null" >
@@ -216,7 +216,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.panther.demo.generator.pojo.Employee" >
+  <update id="updateByPrimaryKey" parameterType="com.panther.demo.entities.Employee" >
     update employee
     set lastName = #{lastname,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
@@ -228,6 +228,6 @@
 
   <!--查询全部数据-->
   <select id="findAll" resultMap="BaseResultMap">
-    select * from employee;
+    select *from employee
   </select>
 </mapper>

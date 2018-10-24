@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.panther.demo.entities.Employee;
 import com.panther.demo.mapper.EmployeeMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Transactional
 public class EmployeeServiceImpl{
 
+    @Autowired
     private EmployeeMapper employeeMapper;
 
     public Employee getEmployeeById(Integer id) {

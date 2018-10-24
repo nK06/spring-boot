@@ -26,10 +26,12 @@ public class EmpController {
      */
 
     @GetMapping("/emps")
-    public PageInfo<Employee> empList(@RequestParam(defaultValue = "0") Integer page,
-                                      @RequestParam(defaultValue = "0") Integer size){
+    public String empList(@RequestParam(defaultValue = "0") Integer page,
+                                      @RequestParam(defaultValue = "0") Integer size,Model model){
         PageInfo<Employee> pageInfo = employeeService.selectAll(page, size);
-        return pageInfo;
+        List<Employee> list = pageInfo.getList();
+        model.addAttribute("emps",list);
+        return "/emp/list";
     }
 
     /**

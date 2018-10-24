@@ -69,10 +69,10 @@
 							<tbody>
 								<tr th:each="emp:${emps}">
 									<td th:text="${emp.id}"></td>
-									<td th:text="${emp.lastName}"></td>
+									<td th:text="${emp.lastname}"></td>
 									<td th:text="${emp.email}"></td>
 									<td th:text="${emp.gender==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartment().getDepartmentName()}"></td>
+									<td th:text="${emp.departmentId}"></td>
 									<td th:text="${#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/} + ${emp.id}">修改</a>
