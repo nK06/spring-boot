@@ -1,20 +1,33 @@
 package com.panther.demo.mapper;
 
 import com.panther.demo.entities.Employee;
-import org.springframework.stereotype.Component;
+import com.panther.demo.entities.EmployeeExample;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-@Component
 public interface EmployeeMapper {
+    int countByExample(EmployeeExample example);
 
-    public Employee getEmployeeById(Integer id);
+    int deleteByExample(EmployeeExample example);
 
-    public void insertEmp(Employee employee);
+    int deleteByPrimaryKey(Integer id);
 
-    public List<Employee> selectAll();
+    int insert(Employee record);
 
-    public void updateEmp(Employee employee);
+    int insertSelective(Employee record);
 
-    public void deleteEmp(Integer id);
+    List<Employee> selectByExample(EmployeeExample example);
+
+    Employee selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") Employee record, @Param("example") EmployeeExample example);
+
+    int updateByExample(@Param("record") Employee record, @Param("example") EmployeeExample example);
+
+    int updateByPrimaryKeySelective(Employee record);
+
+    int updateByPrimaryKey(Employee record);
+
+    List<Employee> findAll();
 }

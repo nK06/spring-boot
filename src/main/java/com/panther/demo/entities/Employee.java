@@ -3,14 +3,16 @@ package com.panther.demo.entities;
 import java.util.Date;
 
 public class Employee {
+    private Integer id;
 
-	private Integer id;
-    private String lastName;
+    private String lastname;
 
     private String email;
-    //1 male, 0 female
+
     private Integer gender;
-    private Department department;
+
+    private Integer departmentId;
+
     private Date birth;
 
     public Integer getId() {
@@ -21,12 +23,12 @@ public class Employee {
         this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname == null ? null : lastname.trim();
     }
 
     public String getEmail() {
@@ -34,7 +36,7 @@ public class Employee {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public Integer getGender() {
@@ -45,12 +47,12 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
     public Date getBirth() {
@@ -60,31 +62,4 @@ public class Employee {
     public void setBirth(Date birth) {
         this.birth = birth;
     }
-    public Employee(Integer id, String lastName, String email, Integer gender,
-                    Department department) {
-        super();
-        this.id = id;
-        this.lastName = lastName;
-        this.email = email;
-        this.gender = gender;
-        this.department = department;
-        this.birth = new Date();
-    }
-
-    public Employee() {
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", department=" + department +
-                ", birth=" + birth +
-                '}';
-    }
-	
-	
 }
