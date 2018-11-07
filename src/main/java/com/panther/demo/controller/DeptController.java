@@ -1,7 +1,7 @@
 package com.panther.demo.controller;
 
 import com.panther.demo.entities.Department;
-import com.panther.demo.servicesImp.DepartmentServiceImpl;
+import com.panther.demo.services.impl.DepartmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,4 +23,5 @@ public class DeptController {
         departmentService.insertDepartment(department);
         return department;
     }
+
 }

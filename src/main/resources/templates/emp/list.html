@@ -82,6 +82,40 @@
 							</tbody>
 						</table>
 					</div>
+					<hr></hr>
+					<div>
+						单文件上传
+						<form method="POST" enctype="multipart/form-data" action="/uploads/upload1">
+							<p>
+								文件1：<input type="file" name="file"/>
+								<input type="submit" value="上传"/>
+							</p>
+						</form>
+					</div>
+					<div>
+						批量文件上传
+						<form method="POST" enctype="multipart/form-data"
+							  action="/uploads/upload2">
+							<p>
+								文件1：<input type="file" name="file"/>
+							</p>
+							<p>
+								文件2：<input type="file" name="file"/>
+							</p>
+							<p>
+								<input type="submit" value="上传"/>
+							</p>
+						</form>
+					</div>
+					<div>
+						Base64 文件上传
+						<form method="POST" action="/uploads/upload3">
+							<p>
+								BASE64编码：<textarea name="base64" rows="10" cols="80"></textarea>
+								<input type="submit" value="上传"/>
+							</p>
+						</form>
+					</div>
 				</main>
 				<form id="deleteForm" method="post">
 					<input type="hidden" name="_method" value="delete"/>

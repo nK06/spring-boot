@@ -1,8 +1,9 @@
-package com.panther.demo.servicesImp;
+package com.panther.demo.services.impl;
 
 import com.panther.demo.entities.Department;
 import com.panther.demo.mapper.DepartmentMapper;
 import com.panther.demo.services.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
+    @Autowired
     private DepartmentMapper departmentMapper;
 
     @Override

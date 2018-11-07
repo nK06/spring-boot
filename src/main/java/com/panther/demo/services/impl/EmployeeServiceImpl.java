@@ -1,4 +1,4 @@
-package com.panther.demo.servicesImp;
+package com.panther.demo.services.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

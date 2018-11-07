@@ -1,6 +1,6 @@
 package com.panther.demo.entities;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Employee {
     private Integer id;

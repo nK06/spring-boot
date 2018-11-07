@@ -3,8 +3,8 @@ package com.panther.demo.controller;
 import com.github.pagehelper.PageInfo;
 import com.panther.demo.entities.Department;
 import com.panther.demo.entities.Employee;
-import com.panther.demo.servicesImp.DepartmentServiceImpl;
-import com.panther.demo.servicesImp.EmployeeServiceImpl;
+import com.panther.demo.services.impl.DepartmentServiceImpl;
+import com.panther.demo.services.impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class EmpController {
 
     @GetMapping("/emps")
     public String empList(@RequestParam(defaultValue = "0") Integer page,
-                                      @RequestParam(defaultValue = "0") Integer size,Model model){
+                                      @RequestParam(defaultValue = "10") Integer size,Model model){
         PageInfo<Employee> pageInfo = employeeService.selectAll(page, size);
         List<Employee> list = pageInfo.getList();
         model.addAttribute("emps",list);

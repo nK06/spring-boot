@@ -1,5 +1,7 @@
 package com.panther.demo;
 
+import com.panther.demo.entities.Employee;
+import com.panther.demo.kafka.KafkaSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 
 @RunWith(SpringRunner.class)
@@ -26,6 +29,25 @@ public class DemoApplicationTests {
         Connection connection = dataSource.getConnection();
         System.out.println(connection);
         connection.close();
+    }
+
+
+    /**
+     * kafkaSender Test
+     */
+    @Autowired
+    private KafkaSender<Employee> kafkaSender;
+
+    @Test
+    public void kafkaSend() throws InterruptedException {
+        for(int i = 0 ; i < 5 ;i++){
+            Employee employee = new Employee();
+            employee.setLastname("AAA__" + i);
+            employee.setBirth(new Date(new java.util.Date().getTime()));
+            employee.setDepartmentId(i);
+            kafkaSender.send(employee);
+            Thread.sleep(3000);
+        }
     }
 
 }
